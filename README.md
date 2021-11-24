@@ -71,7 +71,7 @@ heroku stack:set container
 git push heroku <branch_name>
 ```
 
-- Your application will be built, and Heroku will use the run command provided in **heroku.yml** instead of your **Procfile**.
+- After pushing to heroku, it will use the run command provided in `heroku.yml` instead of your `Procfile`.
 
 ## Push Updated code to heroku using docker cli
 
