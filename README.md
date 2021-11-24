@@ -39,8 +39,84 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Deploy react application using heroku container cli
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Install heroku cli. [Installation heroku](https://devcenter.heroku.com/articles/heroku-cli)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Go to your root of the project folder and use below commands,
+    ```sh
+    heroku login
+    ```
+
+    ```sh
+    heroku plugins:install heroku-container-registry
+    ```
+
+    ```sh
+    heroku create ${YOUR_APP_NAME}
+    ```
+
+    ```sh
+    heroku container:login
+    ```
+
+    ```sh
+    heroku container:push web --app ${YOUR_APP_NAME}
+    ```
+
+    ```sh
+    heroku container:release web --app ${YOUR_APP_NAME}
+    ```
+
+    ```sh
+    heroku open --app ${YOUR_APP_NAME}
+    ```
+
+- Automatically deploy after pushing code changes to main branch, for example
+
+```sh
+git add heroku.yml
+git commit -m "Add heroku.yml"
+```
+
+- Set the stack of your app to container: (Only once)
+```sh
+heroku stack:set container
+```
+
+- Push your app to Heroku:
+```sh
+git push heroku <branch_name>
+```
+
+- Your application will be built, and Heroku will use the run command provided in `heroku.yml` instead of your `Procfile`.
+
+## Push Updated code to heroku with using docker cli
+
+- Initial setup (Only once).
+```sh
+docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
+```
+
+```sh
+docker build -t registry.heroku.com/${YOUR_APP_NAME}/web .
+```
+
+```sh
+docker tag ${IMAGE_NAME} registry.heroku.com/${YOUR_APP_NAME}/web
+```
+
+```sh
+docker push registry.heroku.com/${YOUR_APP_NAME}/web
+```
+
+- When running a Docker container locally, you can set an environment variable using the -e flag:
+
+```sh
+docker run -p 8080:80 -e PORT=80 ${IMAGE_NAME}
+```
+
+ - Mutiple environment setup
+ ```sh
+ docker run -p 8080:80 --env-file .env ${IMAGE_NAME}
+ ```
