@@ -41,7 +41,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Deploy react application using heroku container cli
 
-- Install heroku cli. [Installation heroku](https://devcenter.heroku.com/articles/heroku-cli)
+- Install heroku cli. [Installation heroku instructions](https://devcenter.heroku.com/articles/heroku-cli)
 
 - Go to your root of the project folder and use below commands,
     ```sh
