@@ -86,12 +86,12 @@ docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
 docker tag ${EXISTING_IMAGE_NAME} registry.heroku.com/${YOUR_APP_NAME}/web
 ```
 
-- Build docker image with new changes. 
+- Build docker image again with new changes. 
 ```sh
 docker build -t registry.heroku.com/${YOUR_APP_NAME}/web .
 ```
 
-- Push the new changes to live
+- Push the new local changes to production
 ```sh
 docker push registry.heroku.com/${YOUR_APP_NAME}/web
 ```
