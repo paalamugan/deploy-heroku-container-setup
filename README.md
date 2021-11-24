@@ -73,7 +73,7 @@ git push heroku <branch_name>
 
 - Your application will be built, and Heroku will use the run command provided in **heroku.yml** instead of your **Procfile**.
 
-## Push Updated code to heroku with using docker cli
+## Push Updated code to heroku using docker cli
 
 - Initial setup (Only once).
 ```sh
