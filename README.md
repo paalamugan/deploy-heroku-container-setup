@@ -46,29 +46,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - Go to your root of the project folder and use below commands,
     ```sh
     heroku login
-    ```
-
-    ```sh
     heroku plugins:install heroku-container-registry
-    ```
-
-    ```sh
     heroku create ${YOUR_APP_NAME}
-    ```
-
-    ```sh
     heroku container:login
-    ```
-
-    ```sh
     heroku container:push web --app ${YOUR_APP_NAME}
-    ```
-
-    ```sh
     heroku container:release web --app ${YOUR_APP_NAME}
-    ```
-
-    ```sh
     heroku open --app ${YOUR_APP_NAME}
     ```
 
@@ -98,14 +80,18 @@ git push heroku <branch_name>
 docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
 ```
 
+- Build docker image with new changes. 
 ```sh
 docker build -t registry.heroku.com/${YOUR_APP_NAME}/web .
 ```
+
+- Create a tag `registry.heroku.com/${YOUR_APP_NAME}/web` that refers to `${IMAGE_NAME}` 
 
 ```sh
 docker tag ${IMAGE_NAME} registry.heroku.com/${YOUR_APP_NAME}/web
 ```
 
+- Push the new changes to live
 ```sh
 docker push registry.heroku.com/${YOUR_APP_NAME}/web
 ```
