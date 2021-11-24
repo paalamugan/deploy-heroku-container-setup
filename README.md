@@ -80,15 +80,15 @@ git push heroku <branch_name>
 docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
 ```
 
+- Create a tag `registry.heroku.com/${YOUR_APP_NAME}/web` that refers to `${EXISTING_IMAGE_NAME}` 
+
+```sh
+docker tag ${EXISTING_IMAGE_NAME} registry.heroku.com/${YOUR_APP_NAME}/web
+```
+
 - Build docker image with new changes. 
 ```sh
 docker build -t registry.heroku.com/${YOUR_APP_NAME}/web .
-```
-
-- Create a tag `registry.heroku.com/${YOUR_APP_NAME}/web` that refers to `${IMAGE_NAME}` 
-
-```sh
-docker tag ${IMAGE_NAME} registry.heroku.com/${YOUR_APP_NAME}/web
 ```
 
 - Push the new changes to live
