@@ -54,7 +54,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
     heroku open --app ${YOUR_APP_NAME}
     ```
 
-- Automatically deploy after pushing code changes to main branch, for example
+- Automatically deploy new changes to heroku after pushing to main branch, for example
 
 ```sh
 git add heroku.yml
